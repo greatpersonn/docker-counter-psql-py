@@ -1,0 +1,43 @@
+version: '3.9'
+services:
+  postgres-db:
+    image: postgres:16
+    container_name: counter_db
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=counter_db
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql
+      - ./db/counter.sql:/docker-entrypoint-initdb.d/counter.sql
+    networks:
+      - counter-net
+
+  python-counter:
+    build: .
+    image: counter-app:v1
+    container_name: counter_app
+    depends_on:
+      - postgres-db
+    environment:
+      - DB_NAME=counter_db
+      - DB_USER=admin
+      - DB_PASSWORD=admin
+      - DB_HOST=postgres-db
+      - DB_PORT=5432
+    volumes:
+      - ./variants:/app/variants
+    command: ["python3", "main.py", "inplace"]
+    networks:
+      - counter-net
+
+networks:
+  counter-net:
+    driver: bridge
+    external: true
+
+volumes:
+  pgdata:
+  app:
