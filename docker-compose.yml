@@ -29,7 +29,6 @@ services:
       - DB_PORT=5432
     volumes:
       - ./variants:/app/variants
-    command: ["python3", "main.py", "inplace"]
     networks:
       - counter-net
 

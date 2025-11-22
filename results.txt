@@ -1,0 +1,5 @@
+Variant=lost time=85.211s final_counter=10507 final_version=0
+Variant=serializable time=25.936s final_counter=18676 final_version=0
+Variant=inplace time=96.562s final_counter=100000 final_version=0
+Variant=rowlock time=116.529s final_counter=100000 final_version=0
+Variant=optimistic time=1105.158s final_counter=100000 final_version=100000
