@@ -2,7 +2,7 @@ DB_PARAMS = {
     'dbname': 'counter_db',
     'user': 'admin',
     'password': 'admin',
-    'host': '172.22.0.2',
+    'host': 'postgres-db',
     'port': 5432
 }
 

@@ -1,4 +1,4 @@
-from db import get_conn
+from db.db_conn import get_conn
 from config import USER_ID
 
 def reset_counter():
